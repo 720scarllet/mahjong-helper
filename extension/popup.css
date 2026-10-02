@@ -1,0 +1,21 @@
+:root {color-scheme: dark; font: 14px/1.5 "Microsoft YaHei", system-ui, sans-serif; color: #e9eeec; background: #171b1a;}
+* {box-sizing: border-box;}
+body {margin: 0; width: 340px; min-width: 280px; max-width: 100%;}
+main {padding: 22px;}
+h1 {font-size: 18px; font-weight: 600; margin: 0 0 14px;}
+.connection {display: flex; align-items: center; gap: 9px; margin-bottom: 20px; color: #b7c3be;}
+#indicator {width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; background: #758179;}
+#indicator[data-state="connected"] {background: #55bf92;}
+#indicator[data-state="error"] {background: #e98181;}
+label {display: block; margin-bottom: 7px;}
+input {width: 100%; height: 39px; padding: 8px 10px; font: inherit; border: 1px solid #47514d; border-radius: 5px; background: #212723; color: #fff;}
+input:focus-visible, button:focus-visible {outline: 2px solid #72c3a2; outline-offset: 2px;}
+input::placeholder {color: #96a49d; font-size: 13px;}
+.buttons {display: flex; gap: 8px; margin-top: 12px;}
+button {height: 36px; border: 1px solid #3a8a6c; border-radius: 5px; padding: 0 15px; background: #296c52; color: #fff; font: inherit; cursor: pointer;}
+button:hover {background: #337f62;}
+button.secondary {background: #262d29; border-color: #47514d; color: #c8d2cd;}
+button.secondary:hover {background: #333e37;}
+button:disabled {opacity: .6; cursor: wait;}
+#notice {min-height: 42px; margin: 14px 0 0; font-size: 12px; color: #a9b8b0; overflow-wrap: anywhere;}
+#notice[data-error="true"] {color: #eda2a2;}

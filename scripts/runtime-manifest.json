@@ -1,0 +1,38 @@
+{
+  "node": {
+    "version": "24.12.0",
+    "url": "https://nodejs.org/dist/v24.12.0/node-v24.12.0-win-x64.zip",
+    "sha256": "9c125f61ae947b52e779095830f9cac267846a043ef7192183c84016aaad2812"
+  },
+  "go": {
+    "version": "1.26.1",
+    "url": "https://go.dev/dl/go1.26.1.windows-amd64.zip",
+    "sha256": "9b68112c913f45b7aebbf13c036721264bbba7e03a642f8f7490c561eebd1ecc"
+  },
+  "python": {
+    "version": "3.12.10",
+    "url": "https://www.python.org/ftp/python/3.12.10/python-3.12.10-embed-amd64.zip",
+    "sha256": "4acbed6dd1c744b0376e3b1cf57ce906f9dc9e95e68824584c8099a63025a3c3"
+  },
+  "vcredist": {
+    "url": "https://download.visualstudio.microsoft.com/download/pr/6f02464a-5e9b-486d-a506-c99a17db9a83/8995548DFFFCDE7C49987029C764355612BA6850EE09A7B6F0FDDC85BDC5C280/VC_redist.x64.exe",
+    "sha256": "8995548dfffcde7c49987029c764355612ba6850ee09a7b6f0fddc85bdc5c280"
+  },
+  "torch": {
+    "filename": "torch-2.7.1-cp312-cp312-win_amd64.whl",
+    "url": "https://files.pythonhosted.org/packages/a1/37/a37495502bc7a23bf34f89584fa5a78e25bae7b8da513bc1b8f97afb7009/torch-2.7.1-cp312-cp312-win_amd64.whl",
+    "sha256": "d8bf6e1856ddd1807e79dc57e54d3335f2b62e6f316ed13ed3ecfe1fc1df3d8b"
+  },
+  "models": [
+    {
+      "players": 3,
+      "url": "https://github.com/shinkuan/Akagi-MjaiBot-Mortal/releases/download/v0.1.0/release3p.zip",
+      "sha256": "6890345121062f2d21c3c8e688f7c641a9e92ec2ca79122be8f9cd62ebdbcf3d"
+    },
+    {
+      "players": 4,
+      "url": "https://github.com/shinkuan/Akagi-MjaiBot-Mortal/releases/download/v0.1.0/release4p.zip",
+      "sha256": "757d3cceca9212e7f88e7614157bd404dd8dee682d3007428f66e02d2f6ff670"
+    }
+  ]
+}

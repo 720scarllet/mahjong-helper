@@ -1,0 +1,72 @@
+{
+  "name": "mahjong-helper-overlay",
+  "version": "0.3.0",
+  "private": true,
+  "description": "Mahjong Soul desktop tracker and strategy overlay",
+  "main": "src/main.cjs",
+  "scripts": {
+    "start": "electron .",
+    "test": "node --test --test-concurrency=1 tests/*.test.cjs extension/tests/*.test.cjs",
+    "build": "electron-builder --win dir"
+  },
+  "dependencies": {
+    "@pondwader/socks5-server": "1.0.10",
+    "chrome-remote-interface": "^0.33.3",
+    "http-mitm-proxy": "1.1.0",
+    "lucide": "0.468.0",
+    "protobufjs": "7.5.4"
+  },
+  "devDependencies": {
+    "electron": "41.0.2",
+    "electron-builder": "26.0.12",
+    "playwright": "1.58.2"
+  },
+  "overrides": {
+    "@electron/node-gyp": "https://codeload.github.com/electron/node-gyp/tar.gz/06b29aafb7708acef8b3669835c8a7857ebc92d2"
+  },
+  "build": {
+    "appId": "local.mahjong.helper.overlay",
+    "productName": "Mahjong Helper Overlay",
+    "directories": {
+      "output": "release"
+    },
+    "files": [
+      "src/**/*",
+      "ui/**/*",
+      "liqi.json",
+      "package.json"
+    ],
+    "extraResources": [
+      {
+        "from": "vendor/mortal",
+        "to": "mortal",
+        "filter": ["**/*", "!**/__pycache__/**/*", "!**/*.pyc"]
+      },
+      {
+        "from": "scripts/mortal-worker.py",
+        "to": "mortal-worker.py"
+      },
+      {
+        "from": "bin",
+        "to": "bin"
+      },
+      {
+        "from": "vendor/proxinject",
+        "to": "proxinject"
+      },
+      {
+        "from": "extension",
+        "to": "extension",
+        "filter": ["**/*", "!tests/**/*"]
+      },
+      {
+        "from": "THIRD_PARTY_NOTICES.md",
+        "to": "THIRD_PARTY_NOTICES.md"
+      }
+    ],
+    "win": {
+      "target": "dir",
+      "signAndEditExecutable": false
+    }
+  }
+}

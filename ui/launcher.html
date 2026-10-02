@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; style-src 'self'; script-src 'self'; connect-src 'self'">
+  <title>雀魂助手 · 启动</title>
+  <link rel="stylesheet" href="launcher.css">
+</head>
+<body>
+  <header class="titlebar"><div class="brand"><i data-lucide="layers-2"></i><strong>雀魂助手</strong></div><div class="window-tools"><button id="minimize" class="icon" title="最小化" aria-label="最小化"><i data-lucide="minus"></i></button><button id="close" class="icon" title="退出助手" aria-label="退出助手"><i data-lucide="x"></i></button></div></header>
+  <main>
+    <h1>选择游戏区服</h1>
+    <form id="launch-form">
+      <div class="field"><label for="start-source">接入方式</label><select id="start-source"><option value="web" selected>Microsoft Edge 浏览器</option><option value="client">Windows / Steam 客户端</option></select></div>
+      <div id="region-field" class="field"><label for="region">区服</label><select id="region"><option value="cn" selected>国服 / 中文</option></select></div>
+      <div id="network-field" class="field"><label for="network">游戏网络</label><select id="network"><option value="direct">直连（推荐）</option><option value="system">与普通 Edge 一致</option></select></div>
+      <button id="launch" class="primary" type="submit"><i data-lucide="external-link"></i><span>打开游戏</span></button>
+    </form>
+    <p id="source-help" class="help">打开专用 Edge 窗口，登录后进入对局。</p>
+    <div id="status" class="status" role="status" aria-live="polite"><span class="dot"></span><span id="status-text">等待连接</span></div>
+    <p id="result" role="status" aria-live="polite" hidden></p>
+  </main>
+  <footer><div class="panel-tools"><button id="show-panels" class="utility" title="显示两个悬浮窗"><i data-lucide="panels-left-bottom"></i>显示双窗</button><button id="hide-panels" class="utility" title="隐藏两个悬浮窗"><i data-lucide="eye-off"></i>隐藏双窗</button></div><button id="quit" class="icon exit" title="退出助手" aria-label="退出助手"><i data-lucide="power"></i></button></footer>
+  <script src="lucide.min.js"></script>
+  <script src="launcher.js"></script>
+</body>
+</html>

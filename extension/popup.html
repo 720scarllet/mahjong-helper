@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>雀魂悬浮助手 · 网页接入</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <main>
+    <h1>雀魂网页接入</h1>
+    <div class="connection"><span id="indicator" aria-hidden="true"></span><span id="connection">读取连接状态</span></div>
+    <form id="settings">
+      <label for="token">连接密钥</label>
+      <input id="token" type="password" placeholder="粘贴悬浮窗复制的密钥" maxlength="64" autocomplete="off" spellcheck="false">
+      <div class="buttons"><button type="submit">保存密钥</button><button id="clear" type="button" class="secondary">清除</button></div>
+    </form>
+    <p id="notice" role="status" aria-live="polite"></p>
+  </main>
+  <script src="popup.js"></script>
+</body>
+</html>

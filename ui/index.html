@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; style-src 'self'; script-src 'self'; connect-src 'self'">
+  <title>雀魂助手 · 悬浮窗</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="titlebar">
+    <div class="brand"><i data-lucide="layers-2"></i><strong id="panel-title">记牌</strong></div>
+    <div class="window-tools">
+      <button id="pin" class="icon active" title="置顶" aria-label="置顶" aria-pressed="true"><i data-lucide="pin"></i></button>
+      <button id="through" class="icon" title="鼠标穿透" aria-label="鼠标穿透"><i data-lucide="mouse-pointer-2"></i></button>
+      <button id="settings" class="icon" title="连接与设置" aria-label="连接与设置"><i data-lucide="settings-2"></i></button>
+      <button id="launcher" class="icon" title="打开启动窗口" aria-label="打开启动窗口"><i data-lucide="app-window"></i></button>
+      <button id="minimize" class="icon" title="最小化" aria-label="最小化"><i data-lucide="minus"></i></button>
+      <button id="close" class="icon close" title="隐藏本窗" aria-label="隐藏本窗"><i data-lucide="x"></i></button>
+    </div>
+  </header>
+  <div class="connection-bar"><span id="connection-status" class="connection"><span class="dot"></span>等待连接</span><button id="connect" class="icon small" title="连接游戏" aria-label="连接游戏"><i data-lucide="plug-zap"></i></button><span id="round-info">尚未进入对局</span></div>
+  <div id="message" class="message" hidden></div>
+  <main>
+    <section class="hand-section">
+      <div class="section-heading"><h2>我的手牌</h2><span id="wall-info" class="wall">牌山 <strong>—</strong></span></div>
+      <div id="hand-info" class="hand-info muted">—</div>
+      <div id="hand" class="hand"><span class="empty">等待手牌</span></div>
+      <div id="self-melds" class="self-melds"></div>
+    </section>
+    <div class="workspace">
+      <div class="left-column" id="tracker-panel">
+        <section class="river-section">
+          <div class="section-heading"><h2>牌河</h2><span class="muted" id="river-count">0 张弃牌</span></div>
+          <div id="rivers"><div class="empty-state"><i data-lucide="rows-3"></i><p>等待对局开始</p></div></div>
+        </section>
+        <section class="unseen-section">
+          <div class="section-heading"><h2>未见牌</h2><span class="muted" id="unseen-count">—</span><button class="icon small" id="compact" title="仅显示手牌相关牌" aria-label="仅显示手牌相关牌" aria-pressed="false"><i data-lucide="list-filter"></i></button></div>
+          <div id="unseen" class="unseen"><span class="empty">等待可见牌统计</span></div>
+        </section>
+      </div>
+      <div class="right-column" id="strategy-panel" hidden>
+        <section id="model-section" class="model-section">
+          <div class="section-heading"><h2>当前建议</h2><span id="model-label" class="muted">Mortal</span></div>
+          <div id="model-advice" class="empty">等待对局</div>
+        </section>
+        <section id="call-section" class="call-section" hidden>
+          <div class="section-heading"><h2>鸣牌比较</h2><span id="call-time" class="muted"></span></div>
+          <div id="call-advice"></div>
+        </section>
+        <section class="recommend-section">
+          <div class="section-heading"><h2>牌效率</h2><span id="shanten" class="shanten">—</span></div>
+          <div id="recommendations"><div class="empty-state"><i data-lucide="scan-line"></i><p>等待有效手牌</p></div></div>
+        </section>
+        <section class="route-section">
+          <div class="section-heading"><h2>牌型方向</h2><span class="muted">候选路线</span></div>
+          <div id="routes"><span class="empty">—</span></div>
+        </section>
+      </div>
+    </div>
+  </main>
+  <footer><span id="engine-label">牌效率分析</span><span id="account">账号未识别</span><span id="frames">0 条消息</span></footer>
+  <dialog id="settings-dialog">
+    <div class="dialog-heading"><h2>连接与设置</h2><button id="dismiss" class="icon" title="关闭设置" aria-label="关闭设置"><i data-lucide="x"></i></button></div>
+    <form id="settings-form">
+      <div class="field"><label for="source">数据来源</label><select id="source"><option value="web">Edge 浏览器</option><option value="extension">浏览器扩展</option><option value="client">Windows / Steam 客户端</option></select></div>
+      <div id="web-settings">
+        <div class="field"><label for="server">区服</label><select id="server"><option value="cn">中国大陆服</option></select></div>
+        <button id="open-game" class="command primary" type="button"><i data-lucide="external-link"></i>打开游戏</button>
+      </div>
+      <div id="extension-settings" hidden>
+        <div class="field"><label>配对码</label><button id="copy-token" class="command" type="button"><i data-lucide="copy"></i>复制配对码</button></div>
+        <button id="extension-folder" class="command" type="button"><i data-lucide="folder-open"></i>打开扩展目录</button>
+      </div>
+      <div id="client-settings" hidden>
+        <div class="field"><label for="proxy-mode">接入方式</label><select id="proxy-mode"><option value="inject">游戏进程代理</option><option value="system">Windows 系统代理</option></select></div>
+        <div class="field"><label for="process">游戏进程名</label><input id="process" value="jantama_mahjongsoul" autocomplete="off"></div>
+        <button id="proxy" class="command primary" type="button"><i data-lucide="plug"></i><span>开启客户端接入</span></button>
+      </div>
+      <div class="settings-divider"></div>
+      <div class="field opacity-field"><label for="opacity">本窗透明度</label><input id="opacity" aria-label="本窗透明度" type="range" min="45" max="100" value="100"><output id="opacity-value" for="opacity">100%</output></div>
+      <div class="commands panel-commands"><button id="show-panels" class="command" type="button"><i data-lucide="panels-left-bottom"></i>显示双窗</button><button id="hide-panels" class="command" type="button"><i data-lucide="eye-off"></i>隐藏双窗</button></div>
+      <button id="fit" class="command" type="button"><i data-lucide="panel-left-right"></i>贴合游戏布局</button>
+      <div class="settings-divider"></div>
+      <div class="field"><label>协议资源</label><span id="schema-version" class="muted">—</span><button id="refresh-schema" class="icon" type="button" title="更新协议" aria-label="更新协议"><i data-lucide="refresh-cw"></i></button></div>
+      <details><summary>策略来源</summary><p id="strategy-source" class="strategy-source">动作：Akagi Mortal 插件 v0.1.0 的本地三麻／四麻模型。社区发布权重，未核实训练数据和棋力；不等同于官方在线版。牌效：向听、进张和估计打点。副露比较为规则分析。</p></details>
+      <details><summary>连接诊断</summary><div id="diagnostics" class="diagnostics"></div></details>
+      <div class="settings-divider"></div>
+      <button id="exit" class="command danger" type="button"><i data-lucide="power"></i>退出助手</button>
+    </form>
+    <p id="action-result" role="status" class="action-result"></p>
+  </dialog>
+  <script src="lucide.min.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

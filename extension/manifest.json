@@ -1,0 +1,38 @@
+{
+  "manifest_version": 3,
+  "name": "雀魂悬浮助手 · 网页接入",
+  "description": "将官方雀魂网页的对局消息发送到本机的 Mahjong Helper Overlay。",
+  "version": "0.3.0",
+  "minimum_chrome_version": "111",
+  "permissions": ["storage"],
+  "host_permissions": ["http://127.0.0.1:19221/*"],
+  "background": {"service_worker": "background.js"},
+  "action": {"default_popup": "popup.html", "default_title": "雀魂悬浮助手"},
+  "options_ui": {"page": "popup.html", "open_in_tab": true},
+  "content_scripts": [
+    {
+      "matches": [
+        "https://game.maj-soul.com/*",
+        "https://game.maj-soul.net/*",
+        "https://game.mahjongsoul.com/*",
+        "https://mahjongsoul.game.yo-star.com/*"
+      ],
+      "js": ["main-hook.js"],
+      "run_at": "document_start",
+      "all_frames": true,
+      "world": "MAIN"
+    },
+    {
+      "matches": [
+        "https://game.maj-soul.com/*",
+        "https://game.maj-soul.net/*",
+        "https://game.mahjongsoul.com/*",
+        "https://mahjongsoul.game.yo-star.com/*"
+      ],
+      "js": ["relay.js"],
+      "run_at": "document_start",
+      "all_frames": true,
+      "world": "ISOLATED"
+    }
+  ]
+}
